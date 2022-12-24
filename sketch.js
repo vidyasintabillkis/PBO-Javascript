@@ -90,8 +90,8 @@ class Hero extends Entity{
   } 
 }
 
-class Monster extends Entity{
-  constructor(height, width, xSpeed, ySpeed){
+class Monster extends Entity {
+  constructor(height, width, xSpeed, ySpeed) {
     super(height, width, xSpeed = random(10, 640),
     ySpeed = random(width))
     this.life = 100
@@ -99,8 +99,8 @@ class Monster extends Entity{
     this.level = 1;
   }
 
-  showEnemy(){
-    for(let i = 0; i < 10; i++){
+  showEnemy() {
+    for(let i = 0; i < 10; i++) {
       let enemy = {
         a : random(10,width),
         b : random(-760,0)
@@ -109,13 +109,33 @@ class Monster extends Entity{
     }  
   }
   
-  enemys(){
-    for (let enemy of enemies){
+  enemys() {
+    for(let enemy of enemies) {
       enemy.b += this.level // set level 
       image(rocket,enemy.a,enemy.b,35,45)
-      if(enemy.b > height){
+      if(enemy.b > height) {
         enemies.splice(enemies.indexOf(enemy), 1)
         myHero.life -=35
+      }
+    }
+  }
+}
+
+class level {
+  leveling() {
+    if(keyIsPressed) {
+      if(key == '1') {
+        console.log("1")
+        plays = false
+        myMonster.level = 1
+      } else if(key == '2') {
+        console.log("2")
+        plays = false
+        myMonster.level = 2
+      } else if(key == '3') {
+        console.log("3")
+        plays = false
+        myMonster.level = 3
       }
     }
   }
