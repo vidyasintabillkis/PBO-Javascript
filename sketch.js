@@ -9,7 +9,6 @@ function setup() {
   createCanvas(myMaps.width, myMaps.height)
   bg = loadImage("bg_galaxy.png")
   rocket = loadImage("rocket.png")
-  nuklir = loadImage("nuklir.png")
   hero = loadImage("rocketHero.png")
 	
   myEntity = new Entity(150, 150, 10, 10)
