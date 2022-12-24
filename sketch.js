@@ -13,7 +13,7 @@ function setup() {
 	
   myEntity = new Entity(150, 150, 10, 10)
   myHero =  new Hero(75, 65, 350, 250)
-  myMonster = new Monster(35, 55)
+  myMonster = new Monster(35, 45)
   myLevel =new level()
   myMonster.showEnemy()
 }
@@ -28,7 +28,6 @@ function draw() {
     myLevel.leveling()
     fill(255, 255, 255);
     textSize(20)
-    myLevel.leveling()
   }
   
   if(!plays) {
@@ -80,7 +79,6 @@ function draw() {
       if(key == 'p') {
         myHero.score = 0
         setup()
-        myMonster.level +=1
       }
     }
   }
@@ -160,8 +158,7 @@ class Hero extends Entity{
 
 class Monster extends Entity {
   constructor(height, width, xSpeed, ySpeed) {
-    super(height, width, xSpeed = random(10, 640),
-    ySpeed = random(width))
+    super(height, width, xSpeed, ySpeed)
     this.life = 100
     this.speed = 1;
     this.level = 1;
@@ -180,7 +177,7 @@ class Monster extends Entity {
   enemys() {
     for(let enemy of enemies) {
       enemy.b += this.level // set level 
-      image(rocket,enemy.a,enemy.b,35,45)
+      image(rocket, enemy.a, enemy.b, 35, 45)
       if(enemy.b > height) {
         enemies.splice(enemies.indexOf(enemy), 1)
         myHero.life -=35
