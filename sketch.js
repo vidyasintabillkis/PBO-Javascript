@@ -11,7 +11,12 @@ function setup() {
   rocket = loadImage("rocket.png")
   nuklir = loadImage("nuklir.png")
   hero = loadImage("rocketHero.png")
-
+	
+  myEntity = new Entity(150, 150, 10, 10)
+  myHero =  new Hero(75, 65, 350, 250)
+  myMonster = new Monster(35, 55)
+  myLevel =new level()
+  myMonster.showEnemy()
 }
 
 function draw() {
