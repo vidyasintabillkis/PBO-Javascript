@@ -6,29 +6,27 @@ function draw() {
   background(220);
 }
 
-
+class maps{
+  constructor( width,height) {
+    this.width = width;
+    this.height = height;}
+}
 class Entity{
   constructor(height, width, xSpeed, ySpeed) {
     this.height = height;
     this.width = width;
     this.xSpeed = xSpeed;
     this.ySpeed = ySpeed;
-
-    
   }
   
   move(){
-
     if(this.xSpeed < 0){
       this.xSpeed += 8;
-    }
-    if(this.xSpeed > width){
+    }if(this.xSpeed > width){
       this.xSpeed -= 8;
-    }
-    if(this.ySpeed < 0){
+    }if(this.ySpeed < 0){
       this.ySpeed += 8;
-    }
-    if(this.ySpeed > height){
+    }if(this.ySpeed > height){
       this.ySpeed -= 8;
     }
     
@@ -42,8 +40,8 @@ class Entity{
    } else if (keyCode == DOWN_ARROW ||key == 's') {
      this.ySpeed +=8; 
    }
-  }
-}   
+  } 
+  }   
 }
 
 class Hero extends Entity{
