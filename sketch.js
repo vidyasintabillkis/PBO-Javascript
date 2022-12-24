@@ -89,3 +89,34 @@ class Hero extends Entity{
     mouseButton = false
   } 
 }
+
+class Monster extends Entity{
+  constructor(height, width, xSpeed, ySpeed){
+    super(height, width, xSpeed = random(10, 640),
+    ySpeed = random(width))
+    this.life = 100
+    this.speed = 1;
+    this.level = 1;
+  }
+
+  showEnemy(){
+    for(let i = 0; i < 10; i++){
+      let enemy = {
+        a : random(10,width),
+        b : random(-760,0)
+      }
+      enemies.push(enemy)
+    }  
+  }
+  
+  enemys(){
+    for (let enemy of enemies){
+      enemy.b += this.level // set level 
+      image(rocket,enemy.a,enemy.b,35,45)
+      if(enemy.b > height){
+        enemies.splice(enemies.indexOf(enemy), 1)
+        myHero.life -=35
+      }
+    }
+  }
+}
