@@ -1,3 +1,8 @@
+let peluru= []
+let enemies = []
+let dead = false
+let plays = true
+
 function setup() {
   createCanvas(400, 400);
 }
