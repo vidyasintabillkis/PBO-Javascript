@@ -19,7 +19,71 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  imageMode(CORNER);
+  background(bg);
+  
+  if(plays) {
+    textAlign(CENTER)
+    text('Select Level \n1.Easy \n2.Medium \n3.Hard ', width/2, height/2)
+    myLevel.leveling()
+    fill(255, 255, 255);
+    textSize(20)
+    myLevel.leveling()
+  }
+  
+  if(!plays) {
+    myHero.show();
+    if(myHero.life < 1) dead = true
+    if(!dead) {
+      myHero.move();
+      myHero.atack()
+      myMonster.enemys()
+
+      for (let enemy of enemies) {
+        for (let bullet of peluru) {
+          if(dist(enemy.a, enemy.b, bullet.x, bullet.y) < 15) {
+            enemies.splice(enemies.indexOf(enemy), 1)
+            peluru.splice(peluru.indexOf(bullet), 1)
+            myHero.score += 10
+          }
+        }
+      }
+  } else {
+    textSize(36)
+    for (let enemy of enemies) {
+      enemies.splice(enemies.indexOf(enemy), 1)
+    }
+    textAlign(CENTER)
+    text('You Dead!', width/2, height/2)
+    textSize(20)
+    text('Score : '+ myHero.score, width/2, height/2+30)
+    text('Klik P untuk melanjutkan ', width/2+10, height/2-70)
+    }
+    if(keyIsPressed) {
+      if(key == 'p') {
+        setup()
+        plays = true
+        dead = false
+        myHero.score = 0
+        myHero.life = 100
+      }
+    }
+  }
+  if(enemies.length == 0 && myHero.score >= 80) {
+    textSize(36)
+    textAlign(CENTER)
+    text('You Win!', width/2, height/2)
+    textSize(20)
+    text('Score : '+ myHero.score, width/2, height/2+30)
+    text('Klik P untuk melanjutkan ', width/2+10, height/2-70)
+    if(keyIsPressed) {
+      if(key == 'p') {
+        myHero.score = 0
+        setup()
+        myMonster.level +=1
+      }
+    }
+  }
 }
 
 class maps{
