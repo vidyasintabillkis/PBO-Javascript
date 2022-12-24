@@ -4,7 +4,14 @@ let dead = false
 let plays = true
 
 function setup() {
-  createCanvas(400, 400);
+  myMaps = new maps(650, 410)
+  
+  createCanvas(myMaps.width, myMaps.height)
+  bg = loadImage("bg_galaxy.png")
+  rocket = loadImage("rocket.png")
+  nuklir = loadImage("nuklir.png")
+  hero = loadImage("rocketHero.png")
+
 }
 
 function draw() {
